@@ -271,6 +271,22 @@ var APP = {
 
 		}
 
+		/*document.addEventListener('mouseenter', function(event) {
+			var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+			var mouseY = - (event.clientY / window.innerHeight) * 2 + 1;
+		
+			var vector = new THREE.Vector3(mouseX, mouseY, 0.5);
+			vector.unproject(camera);
+			var dir = vector.sub(camera.position).normalize();
+			var distance = -camera.position.z / dir.z;
+			var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+		
+			var light = scene.getObjectByName('PointLight'); // Substitua 'PointLight' pelo nome da sua luz
+			if (light) {
+				light.position.copy(pos);
+			}
+		});
+*/
 	}
 
 };
