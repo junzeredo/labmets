@@ -7,6 +7,7 @@ var APP = {
 
 		var loader = new THREE.ObjectLoader();
 		var camera, scene;
+		
 
 		var events = {};
 
@@ -95,7 +96,22 @@ var APP = {
 
 			dispatch( events.init, arguments );
 
+		/*var mouseX = (clientX / window.innerWidth);
+   			var mouseY = - (clientY / window.innerHeight);*/
+
+			var x = 0;
+			var y = 1;
+			var z = -4;
+
+			var lightUuid = "42716ceb-0a15-41f2-956c-f2139413ba2b"; // UUID do objeto de luz
+			var light = scene.getObjectByProperty('uuid', lightUuid);
+
+			var newPosition = new THREE.Vector3(x, y, z); // Defina as coordenadas x, y, z da nova posição
+			light.position.copy(newPosition); // Atualiza a posição do objeto de luz
+
 		};
+
+		
 
 		this.setCamera = function ( value ) {
 
@@ -240,7 +256,18 @@ var APP = {
 
 		function onPointerMove( event ) {
 
-			dispatch( events.pointermove, event );
+			var mouseX = (event.clientX / window.innerWidth) * 8 - 4;
+			var mouseY = (event.clientY / window.innerHeight) * 4 - 1;
+
+			var x = mouseX;
+			var y = 0.7; 
+			var z = mouseY;
+
+			var lightUuid = "42716ceb-0a15-41f2-956c-f2139413ba2b"; // UUID da luz
+			var light = scene.getObjectByProperty('uuid', lightUuid);
+
+			var newPosition = new THREE.Vector3(x, y, z); // x, y, z da nova posição
+			light.position.copy(newPosition); // Atualiza a posição do objeto de luz
 
 		}
 
